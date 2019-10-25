@@ -36,13 +36,12 @@ class NewVisitorTest(unittest.TestCase):
         # When he hits enter, tehe page updates, and now the page lists
         # "1: Buy peacock feathers" as an item in a to-do list table
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(10)
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows)
-        )
+        self.assertIn('1: Buy peacock feathers', [row.text for row in rows]),
+            
 
         self.fail('Finish the test!')
 
