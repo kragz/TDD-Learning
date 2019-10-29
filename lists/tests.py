@@ -15,6 +15,8 @@ class HomepageTest(TestCase):
         self.assertEqual(Item.objects.count(), 1)
         new_item = Item.objects.first()
         self.assertEqual(new_item.text, 'A new list item')
+
+
     
     def test_redirects_after_POST(self):
         response = self.client.post('/', data={'item_text': 'A new list item'})        
@@ -49,6 +51,7 @@ class ItemModelTest(TestCase):
         second_item.text = 'Item the second'
         second_item.save()
 
+
         saved_items = Item.objects.all()
         self.assertEqual(saved_items.count(), 2)
 
@@ -57,3 +60,7 @@ class ItemModelTest(TestCase):
         second_saved_item = saved_items[1]
         self.assertEqual(first_saved_item.text, 'The first (ever) list item')
         self.assertEqual(second_saved_item.text, 'Item the second')
+        
+
+
+
